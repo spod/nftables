@@ -1,0 +1,7 @@
+FROM debian:trixie
+
+RUN apt-get update && apt-get install -y nftables golang-go ca-certificates
+
+RUN go install github.com/gokrazy/freeze/cmd/...@latest
+
+RUN ~/go/bin/freeze $(which nft)
